@@ -1,53 +1,5 @@
-DATE : 22nd December 2024
-1.User login page with Username and Passowrd.   -   IN_PROGRESS
-2.Create User Option.                           -   PENDING
-For structuring I'm following, https://medium.com/@amirm.lavasani/how-to-structure-your-fastapi-projects-0219a6600a8f
+1.Look for free hosting sites for this project and host it.
+2.Create a create user API - User login page with Username and Passowrd.   -   PENDING
+3.Login API - Create User Option.                                          -   PENDING
 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
-DATE : 
+
