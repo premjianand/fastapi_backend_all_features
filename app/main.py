@@ -5,7 +5,7 @@ from app.schemas import USERDETAILS
 
 app = FastAPI()
 
-@app.get("/")
+@app.get("/",methods=["GET", "HEAD"])
 def read_root():
     return {"message": "FastAPI application is running!"}
 
