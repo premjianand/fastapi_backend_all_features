@@ -5,9 +5,13 @@ from app.schemas import USERDETAILS
 
 app = FastAPI()
 
-@app.get("/",methods=["GET", "HEAD"])
+@app.get("/")
 def read_root():
     return {"message": "FastAPI application is running!"}
+
+@app.head("/")
+def health_check():
+    return {}
 
 @app.post('/Create_User')
 async def createuser(userdetails:USERDETAILS):
