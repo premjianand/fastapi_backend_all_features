@@ -7,3 +7,5 @@ PROJECT IDEA
 Backend for an application.
 Follow perfect coding structure. I'm following, https://medium.com/@amirm.lavasani/how-to-structure-your-fastapi-projects-0219a6600a8f
 
+Covered topics : 
+FastAPI, Decorators
