@@ -13,5 +13,10 @@ class USERDETAILS(BaseModel):
     PASSWORD:str
     FIRST_NAME:str
     LAST_NAME:str
-    PHONE_NUMBER:int
+    PHONE_NUMBER:str
     ROLE:ROLE_ENUM
+
+
+class LOGINDETAILS(BaseModel):
+    EMAIL_ID:str
+    PASSWORD:str

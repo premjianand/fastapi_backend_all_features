@@ -7,11 +7,9 @@ from app.config import config
 username = config["DATABASE"]["USERNAME"]
 password = config["DATABASE"]["PASSWORD"]
 database = config["DATABASE"]["DATABASE"]
-# conn_str = config["DATABASE"][]
 port = config["DATABASE"]["PORT"]
 host = config["DATABASE"]["HOST"]
 
-print(username,password,database,port,host)
 db_string = f'postgresql://{username}:{password}@{host}:{port}/{database}'
 
 engine = create_engine(db_string, pool_size=20, max_overflow=0)
