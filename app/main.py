@@ -1,6 +1,6 @@
 import os
 
-from fastapi import FastAPI,Depends,status
+from fastapi import FastAPI,Depends,status,HTTPException
 from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
 from datetime import datetime
@@ -57,6 +57,11 @@ async def login(login_credentials:LOGINDETAILS, db:Session=Depends(get_db)):
         return JSONResponse(
             status_code=status.HTTP_200_OK,
             content={"response":response["response"],"token":response["token"]}
+        )
+    except HTTPException as e:
+        return JSONResponse(
+            status_code=e.status_code,
+            content={"message": e.detail}
         )
     except Exception as e:
         return JSONResponse(
