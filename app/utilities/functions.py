@@ -1,4 +1,5 @@
 import bcrypt
+from fastapi import status,HTTPException
 
 from app.database import models
 from app.utilities.auth import AuthHandler
@@ -29,6 +30,12 @@ def check_credentials(email_id,password,db):
             print(token)
             return {"response":"Login Successful.","token":token}
         else:
-            raise Exception( f"Password does not match. Login Failed.")
+            raise HTTPException( 
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail=f"Incorrect Password. Login Failed."
+                )
     else:
-        return f"{email_id} is not registered."
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail = f"{email_id} is not registered."
+            )
