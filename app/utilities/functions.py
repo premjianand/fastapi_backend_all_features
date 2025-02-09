@@ -1,6 +1,7 @@
 import bcrypt
-from app.database import models
 
+from app.database import models
+from app.utilities.auth import AuthHandler
 
 def encrypt_password(password):
     encoded_password = password.encode('utf-8')
@@ -23,8 +24,11 @@ def check_credentials(email_id,password,db):
         ).first()
         verified = bcrypt.checkpw(password.encode('utf-8'),password_from_db.password)
         if verified:
-            return "Login Successful."
-        else :
-            return f"Password does not match. Login Failed."
+            authhandler = AuthHandler()
+            token = authhandler.encode_token(email_id)
+            print(token)
+            return {"response":"Login Successful.","token":token}
+        else:
+            raise Exception( f"Password does not match. Login Failed.")
     else:
         return f"{email_id} is not registered."
