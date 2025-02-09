@@ -1,10 +1,14 @@
-from sqlalchemy import Integer,String,Column,Boolean,DateTime,Enum
-from sqlalchemy.types import BINARY
+from sqlalchemy import Integer,String,Column,Boolean,DateTime,Enum,func
+from sqlalchemy.types import LargeBinary
 
 from app.database.database import Base
 from app.schemas import ROLE_ENUM
 
-class Users(Base):
+class Timestamp:
+    created_ts = Column(DateTime, default=func.now(), nullable=False)
+    updated_ts = Column(DateTime, default=func.now(), onupdate=func.now(), nullable=False)
+
+class Users(Base,Timestamp):
     __tablename__ = 'users'
     __table_args__ = {'extend_existing': True}
 
@@ -12,10 +16,8 @@ class Users(Base):
     username = Column(String)
     first_name = Column(String)
     last_name = Column(String)
-    password = Column(BINARY)
+    password = Column(LargeBinary)
     email_id = Column(String)
     phone_number = Column(String)
     role = Column(Enum(ROLE_ENUM))
-    created_ts = Column(DateTime)
-    updated_ts = Column(DateTime)
     is_active = Column(Boolean, default=True)
