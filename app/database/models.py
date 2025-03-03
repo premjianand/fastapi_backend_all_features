@@ -2,7 +2,7 @@ from sqlalchemy import Integer,String,Column,Boolean,DateTime,Enum,func
 from sqlalchemy.types import LargeBinary
 
 from app.database.database import Base
-from app.schemas import ROLE_ENUM
+from app.schemas import RoleEnum
 
 class Timestamp:
     created_ts = Column(DateTime, default=func.now(), nullable=False)
@@ -19,5 +19,5 @@ class Users(Base,Timestamp):
     password = Column(LargeBinary)
     email_id = Column(String)
     phone_number = Column(String)
-    role = Column(Enum(ROLE_ENUM))
+    role = Column(Enum(RoleEnum))
     is_active = Column(Boolean, default=True)
