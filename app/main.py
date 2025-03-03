@@ -1,20 +1,25 @@
 import os
 
-from fastapi import FastAPI,Depends,status,HTTPException
+from fastapi import FastAPI,Depends,status,HTTPException,APIRouter
 from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
 from datetime import datetime
 
 from app.database.database import engine,get_db
-from app.schemas import USERDETAILS, LOGINDETAILS
+from app.schemas import UserDetails, LoginDetails
 from app.database import models
 from app.utilities import functions
 from app.utilities.auth import AuthHandler
+from app.middlewares.middlewares import RequestBaseSetup
+
 
 app = FastAPI()
+app.add_middleware(RequestBaseSetup)
+
 models.Base.metadata.create_all(engine)
 
 authhandler = AuthHandler()
+
 
 @app.get("/")
 def read_root():
@@ -22,7 +27,7 @@ def read_root():
 
 
 @app.post('/Create_User')
-async def createuser(userdetails:USERDETAILS, db:Session=Depends(get_db)):
+async def createuser(userdetails:UserDetails, db:Session=Depends(get_db)):
     encrypted_password = functions.encrypt_password(userdetails.PASSWORD)
     try:
         add_user_data = models.Users(
@@ -50,7 +55,7 @@ async def createuser(userdetails:USERDETAILS, db:Session=Depends(get_db)):
     
 
 @app.post('/Login')
-async def login(login_credentials:LOGINDETAILS, db:Session=Depends(get_db)):
+async def login(login_credentials:LoginDetails, db:Session=Depends(get_db)):
     try:
         email_id,password = login_credentials.EMAIL_ID, login_credentials.PASSWORD
         response = functions.check_credentials(email_id,password,db)
