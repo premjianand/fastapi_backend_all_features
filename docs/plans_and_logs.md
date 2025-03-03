@@ -10,7 +10,7 @@ Want to include :
 3.Middlewares : 
     - Include the features featured in, https://www.youtube.com/watch?v=2-exKF2Vszg&t=24s  --> DONE
     - For CORS, https://www.youtube.com/watch?v=-AM5QVkb0OM  --> INPROGRESS
-
+4.Add all streamlit functionalities.
 
 define a middleware using @app.middleware("http")  -  Done
 Middleware as class  -  Done
